@@ -1,0 +1,13 @@
+# server endpoint settings
+HOST_STRING = 'yourusername@yourhost'
+PASS = ''
+
+# directories
+GIT_DIR = '/path/to/your/gitrepo'
+WWW_DIR = '/path/to/your/wwwdirecotry'
+
+# repository
+GIT_REPO_URL = 'git://github.com/tomazk/Text-Extraction-Evaluation-Data.git' # read only
+
+# dataset 
+DATASET_LIST = ('google-news', 'cleaneval-dev', )
