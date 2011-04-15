@@ -5,6 +5,7 @@ PASS = ''
 # directories
 GIT_DIR = '/path/to/your/gitrepo'
 WWW_DIR = '/path/to/your/wwwdirecotry'
+HOME = '/home/yourusername/'
 
 # repository
 GIT_REPO_URL = 'git://github.com/tomazk/Text-Extraction-Evaluation-Data.git' # read only
