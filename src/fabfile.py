@@ -24,13 +24,19 @@ def gitdir(fun):
 # commands
 
 def copy_log():
+    '''Copy log to remote'''
     put(log_path, os.path.join(settings.HOME, 'fabric.log'))
     
 def shell():
+    '''Open a remote shell'''
     open_shell('cd '+ settings.GIT_DIR)
 
 @gitdir
 def deploy_dataset(dataset, list = True):
+    '''
+    Cleanup any existing files in the dataset endpoint. 
+    Copy raw dataset files to the endpoint.
+    '''
     dataset_path = os.path.join(settings.WWW_DIR, dataset)
     
     sudo('rm -rf ' + dataset_path)
@@ -41,21 +47,25 @@ def deploy_dataset(dataset, list = True):
     logger.info('deployed dataset %s to %s', dataset , dataset_path )
         
 def deploy_all():
+    '''Deploy all datasets'''
     logger.info('deploying all datasets')
     for dataset in settings.DATASET_LIST:
         deploy_dataset(dataset, list = False) 
     run('tree -d '+ settings.WWW_DIR)
 
 def server_restart():
+    '''Start lighttpd deamon'''
     sudo('/etc/init.d/lighttpd restart')
     logger.info('lighttpd restart')
     
 def server_stop():
+    '''Stop lighttpd deamon'''
     sudo('/etc/init.d/lighttpd stop')
     logger.info('lighttpd stop')
 
 @gitdir
 def clone_repository():
+    '''Clone the repository from the remote'''
     run('rm -rf * .git*')
     run('ls -a')
     run('git clone %s .' % settings.GIT_REPO_URL)
@@ -64,6 +74,7 @@ def clone_repository():
         
 @gitdir
 def checkout_remote_branch(branch):
+    '''Create and checkout a remote git branch'''
     run('git branch -a')
     run('git checkout -b %s origin/%s' % (branch,branch))
     run('git branch')
@@ -71,6 +82,7 @@ def checkout_remote_branch(branch):
         
 @gitdir
 def checkout_branch(branch):
+    '''Checkout branch'''
     run('git branch -a')
     run('git checkout %s' % branch)
     run('git branch')
@@ -78,5 +90,6 @@ def checkout_branch(branch):
         
 @gitdir
 def pull_branch(branch):
+    '''Pull branch'''
     run('git pull origin %s' % branch)
     logger.info('pull from branch %s', branch)
