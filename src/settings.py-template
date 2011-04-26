@@ -11,4 +11,4 @@ HOME = '/home/yourusername/'
 GIT_REPO_URL = 'git://github.com/tomazk/Text-Extraction-Evaluation-Data.git' # read only
 
 # dataset 
-DATASET_LIST = ('google-news', 'cleaneval-dev', )
+DATASET_LIST = ('google-news', 'cleaneval-dev','test-google-news','test-cleaneval', )
