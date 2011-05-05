@@ -33,7 +33,7 @@ def shell():
 
 def home_shell():
     '''Open a shell in home directory'''
-    open_shell('cd ' + settings.HOME_DIR)
+    open_shell('cd ' + settings.HOME)
 
 @gitdir
 def deploy_dataset(dataset, list = True):
