@@ -31,6 +31,10 @@ def shell():
     '''Open a remote shell'''
     open_shell('cd '+ settings.GIT_DIR)
 
+def home_shell():
+    '''Open a shell in home directory'''
+    open_shell('cd ' + settings.HOME_DIR)
+
 @gitdir
 def deploy_dataset(dataset, list = True):
     '''
